@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import application.model.Fonction;
 import application.service.FonctionServiceImpl;
-import application.service.Services;
 
 @RestController
 @RequestMapping("/api/listfonction")

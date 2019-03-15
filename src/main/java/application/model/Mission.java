@@ -1,12 +1,14 @@
 package application.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,6 +21,10 @@ public class Mission implements Serializable {
 
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	private Long code_mission;
 	private String objetA;
@@ -32,11 +38,30 @@ public class Mission implements Serializable {
 	@JsonIgnore
 	private MotClé Motcle;
 
+	
+	@OneToMany(mappedBy="mission")
+	@JsonIgnore
+	private Collection<Ord_Miss> ordmiss;
 
 
 	public Long getCode_mission() {
 		return code_mission;
 	}
+
+
+	
+
+	public Collection<Ord_Miss> getOrdmiss() {
+		return ordmiss;
+	}
+
+
+
+
+	public void setOrdmiss(Collection<Ord_Miss> ordmiss) {
+		this.ordmiss = ordmiss;
+	}
+
 
 
 
@@ -113,7 +138,9 @@ public class Mission implements Serializable {
 
 
 
-	public Mission(Long code_mission, String objetA, String objetF, Date date_debut, Date date_fin, MotClé motcle) {
+
+	public Mission(Long code_mission, String objetA, String objetF, Date date_debut, Date date_fin, MotClé motcle,
+			Collection<Ord_Miss> ordmiss) {
 		super();
 		this.code_mission = code_mission;
 		this.objetA = objetA;
@@ -121,8 +148,11 @@ public class Mission implements Serializable {
 		this.date_debut = date_debut;
 		this.date_fin = date_fin;
 		Motcle = motcle;
+		this.ordmiss = ordmiss;
 	}
-	
+
+
+
 	
 	
 }

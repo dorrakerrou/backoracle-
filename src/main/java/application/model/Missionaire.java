@@ -6,6 +6,7 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -86,6 +87,9 @@ public class Missionaire implements Serializable {
 
 
 
+	@OneToMany
+	private Collection<Ord_Miss> ordmiss;
+	
 	@ManyToOne 
 	private DeptGen dept;
 
